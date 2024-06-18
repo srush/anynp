@@ -6,12 +6,13 @@ def my_fun(x) -> ArrayLike:
     print(type(array))
     return array
 
-my_fun(10)
+x = my_fun([10])
 
 with switch.set_context(XP.Jax):
-    my_fun(10)
+    x = my_fun([10])
+    print(x.at[0].set(0))
 
 with switch.set_context(XP.Torch):
-    my_fun(10)
+    my_fun([10])
 
-my_fun(20)
+my_fun([20])
