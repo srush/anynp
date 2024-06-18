@@ -13,7 +13,7 @@ else:
 class XP(Enum):
     Numpy = 1
     Jax = 2
-    Pytorch = 3
+    Torch = 3
 
 @dataclass
 class _Array:
@@ -23,17 +23,17 @@ class _Array:
         if self.mode == XP.Numpy:
             import array_api_compat.numpy as onp
             return onp 
-        elif self.mode == XP.Pytorch:
+        elif self.mode == XP.Jax:
             import jax.experimental.array_api as jnp
             return jnp
-        elif self.mode == XP.Jax:
-            import array_api_compat.pytorch as pnp
+        elif self.mode == XP.Torch:
+            import array_api_compat.torch as pnp
             return pnp
         
     @contextmanager
     def set_context(self, typ: XP):
         # Code to acquire resource, e.g.:
-        old_mode = typ
+        old_mode = self.mode
         self.mode = typ
         try:
             yield None

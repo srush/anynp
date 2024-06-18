@@ -1,3 +1,5 @@
+from types import ModuleType
+import array_api_compat.numpy as onp
 
 class _ArrayAPINameSpace(ModuleType):
 
