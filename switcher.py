@@ -27,7 +27,7 @@ class _Array:
             import jax.experimental.array_api as jnp
             return jnp
         elif self.mode == XP.Jax:
-            import array_api_compat.pytroch as pnp
+            import array_api_compat.pytorch as pnp
             return pnp
         
     @contextmanager
